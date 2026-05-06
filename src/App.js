@@ -4,7 +4,7 @@ import Chart from "./Chart.js";
 
 var mqtt = require("mqtt");
 var options = {
-  protocol: "ws",
+  protocol: "wss",
   username: "frank",
   password: "xnn7pegKJjf7IbCX",
   keepalive: 20, // clientId uniquely identifies client
@@ -12,7 +12,7 @@ var options = {
   clientId: "mqttjs_" + Math.random().toString(16).substr(2, 8),
 };
 
-var client = mqtt.connect("wss://mqtts.hirrly.de:9001", options);
+var client = mqtt.connect("wss://mqtt.hirrly.de:9001", options);
 
 client.subscribe("/frank/device/50HzData");
 client.subscribe("device/50HzData");
