@@ -4,7 +4,7 @@ import Chart from "./Chart.js";
 
 var mqtt = require("mqtt");
 var options = {
-  protocol: "ws",
+  protocol: "wss",
   username: "frank",
   password: "xnn7pegKJjf7IbCX",
   keepalive: 20, // clientId uniquely identifies client
