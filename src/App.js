@@ -5,14 +5,17 @@ import Chart from "./Chart.js";
 var mqtt = require("mqtt");
 var options = {
   protocol: "wss",
-  username: "frank",
-  password: "xnn7pegKJjf7IbCX",
+  //username: "frank",
+  //password: "xnn7pegKJjf7IbCX",
+  username: "",
+  password: "",
   keepalive: 20, // clientId uniquely identifies client
   // choose any string you wish
   clientId: "mqttjs_" + Math.random().toString(16).substr(2, 8),
 };
 
-var client = mqtt.connect("wss://mqtt.hirrly.de:9001", options);
+//var client = mqtt.connect("https://mqtts.hirrly.de:9001", options);
+var client = mqtt.connect("wss://broker.emqx.io:8084/mqtt", options);
 
 client.subscribe("/frank/device/50HzData");
 client.subscribe("device/50HzData");
@@ -48,7 +51,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Grid Watch</h1>
-        <p>Grid Frequency is: {msg}Hz</p>
+        <p>Grid Frequency is: {Number(msg).toFixed(3)}Hz</p>
       </header>
       <Chart parentToChild={data} />
     </div>
