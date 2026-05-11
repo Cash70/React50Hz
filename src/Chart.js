@@ -9,7 +9,7 @@ import {
   YAxis,
   VerticalGridLines,
   HorizontalGridLines,
-  LineSeries
+  LineSeries,
 } from "react-vis";
 
 export default function Chart({ parentToChild }) {
@@ -60,22 +60,42 @@ export default function Chart({ parentToChild }) {
 
   //tickValues={[0, 1.5, 2, 3, 4]}
 
-  const axisStyle = {
+  /* const axisStyle = {
     ticks: {
       fontSize: "14px",
-      color: "#333"
+      color: "#333",
     },
     title: {
       fontSize: "16px",
-      color: "#333"
-    }
+      color: "#333",
+    },
+  };*/
+  const axisStyle = {
+    ticks: {
+      stroke: "blue", // Farbe der Tick-Linien
+    },
+    text: {
+      fill: "blue", // Farbe der Tick-Beschriftung
+      fontSize: 14,
+    },
+    title: {
+      fill: "#88ffff", // Farbe des Titels
+      fontSize: 16,
+    },
+    line: {
+      stroke: "orange", // Farbe der Achsenlinie
+    },
   };
 
   return (
     <center>
-      <XYPlot width={400} height={300}yDomain={[49.800, 50.200]}>
-        
-        <HorizontalGridLines />
+      <XYPlot width={400} height={300} yDomain={[49.8, 50.2]}>
+        <HorizontalGridLines
+          style={{
+            stroke: "#999999",
+            strokeWidth: 1,
+          }}
+        />
         <XAxis
           hideLine
           title="Hz"
@@ -84,8 +104,24 @@ export default function Chart({ parentToChild }) {
           tickValues={[]}
           style={axisStyle}
         />
-        <YAxis left={50}/>
-        <LineSeries data={linedatafinal} />
+        <YAxis left={50} />
+        <YAxis
+          left={50}
+          style={{
+            line: {
+              stroke: "#666666",
+              strokeWidth: 1,
+            },
+            ticks: {
+              stroke: "#ff4444",
+            },
+            text: {
+              fill: "#ffffff",
+              fontSize: 12,
+            },
+          }}
+        />
+        <LineSeries data={linedatafinal} color="#88ffff" />
       </XYPlot>
     </center>
   );
